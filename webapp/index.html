@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premium Collection</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 24px 16px;
+  background: #10091c;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.header {
+  text-align: center;
+  padding: 20px 10px;
+}
+.header h2 {
+  color: #d9b5ff;
+  letter-spacing: 1px;
+}
+.header p { color: #b8a9c9; }
+.category {
+  display: block;
+  width: 100%;
+  margin: 13px 0;
+  padding: 19px;
+  border: none;
+  border-radius: 13px;
+  background: #7136bd;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+.category:active {
+  background: #57248f;
+  transform: scale(0.98);
+}
+.footer {
+  text-align: center;
+  color: #a99ab9;
+  margin-top: 30px;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2>PREMIUM COLLECTION</h2>
+  <p>Select Your Category</p>
+</div>
+
+<button class="category" data-category="1">CATEGORY 1</button>
+<button class="category" data-category="2">CATEGORY 2</button>
+<button class="category" data-category="3">CATEGORY 3</button>
+<button class="category" data-category="4">CATEGORY 4</button>
+<button class="category" data-category="5">CATEGORY 5</button>
+
+<div id="details" style="display:none;background:#24133d;padding:20px;border-radius:15px;margin-top:20px;">
+<h3 id="categoryName"></h3>
+<p id="description">Description coming soon.</p>
+<p id="count">Collection: To be configured</p>
+<p id="price">Price: To be configured</p>
+<button class="category" onclick="goHome()">⬅ Back to Categories</button>
+</div>
+<div class="footer">Premium Experience • Secure Access</div>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+
+if (window.Telegram && window.Telegram.WebApp) {
+  const tg = window.Telegram.WebApp;
+  tg.ready();
+  tg.expand();
+  tg.setHeaderColor("#10091c");
+  tg.setBackgroundColor("#10091c");
+}
+function goHome() {
+  document.getElementById("details").style.display = "none";
+  document.querySelectorAll(".category[data-category]").forEach(b => b.style.display = "block");
+}
+
+document.querySelectorAll(".category[data-category]").forEach(button => {
+  button.addEventListener("click", () => {
+    const id = button.dataset.category;
+    document.getElementById("categoryName").textContent = "CATEGORY " + id;
+    document.getElementById("details").style.display = "block";
+    document.querySelectorAll(".category[data-category]").forEach(b => b.style.display = "none");
+    window.scrollTo(0, 0);
+  });
+});
+</script>
+</body>
+</html>

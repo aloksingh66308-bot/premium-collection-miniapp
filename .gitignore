@@ -1,0 +1,16 @@
+.env
+__pycache__/
+*.pyc
+data/bot.db
+backups/
+logs/
+famwise_key.txt
+*.key
+*.pem
+*.backup
+*.bak
+bot_backup.py
+bot_before_*.py
+bot_pre_*.py
+orders*.json
+settings*.json
